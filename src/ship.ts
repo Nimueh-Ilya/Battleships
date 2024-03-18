@@ -8,4 +8,8 @@ export class Ship {
     this.hits = hits;
     this.sunk = sunk;
   }
+
+  sink() {
+    this.sunk = true;
+  }
 }
