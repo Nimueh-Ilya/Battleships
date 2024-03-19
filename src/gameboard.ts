@@ -1,4 +1,4 @@
-type gameboardgrid = (number[] | number)[];
+type gameboardgrid = (number | string)[][];
 export class Gameboard {
   attacks: number;
   board: gameboardgrid;
