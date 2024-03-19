@@ -1,5 +1,5 @@
 export class Ship {
-  length: number;
+  readonly length: number;
   hits: number;
   sunk: boolean;
 
