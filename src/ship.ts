@@ -1,11 +1,17 @@
 export class Ship {
-  readonly length: number;
+  name?: string;
+  length: number;
   hits: number;
   sunk: boolean;
   xcoord: number;
   ycoord: number;
 
-  constructor(length: number, xcoord: number = 0, ycoord: number = 0) {
+  constructor(
+    length: number,
+    xcoord: number = 0,
+    ycoord: number = 0,
+    name?: string
+  ) {
     this.length = length;
     this.hits = 0;
     this.sunk = false;
@@ -27,4 +33,24 @@ export class Ship {
   sink() {
     this.sunk = true;
   }
+}
+export class Carrier extends Ship {
+  name: string = "Carrier";
+  length: number = 5;
+}
+export class Battleship extends Ship {
+  name: string = "Battleship";
+  length: number = 4;
+}
+export class Destroyer extends Ship {
+  name: string = "Destroyer";
+  length: number = 3;
+}
+export class Submarine extends Ship {
+  name: string = "Submarine";
+  length: number = 3;
+}
+export class patrolBoat extends Ship {
+  name: string = "Patrol Boat";
+  length: number = 2;
 }
