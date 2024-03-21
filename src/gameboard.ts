@@ -15,10 +15,7 @@ export class Gameboard {
     if (this.board) {
       return this.board;
     }
-    this.board = Array(10).fill(0);
-    this.board.forEach((point) => {
-      point = Array(10).fill(0);
-    });
+    this.board = Array.from(Array(10), () => new Array(10));
     return this.board;
   }
   placeship(
