@@ -2,11 +2,15 @@ export class Ship {
   readonly length: number;
   hits: number;
   sunk: boolean;
+  xcoord: number;
+  ycoord: number;
 
-  constructor(length: number, hits: number = 0, sunk: boolean = false) {
+  constructor(length: number, xcoord: number, ycoord: number) {
     this.length = length;
-    this.hits = hits;
-    this.sunk = sunk;
+    this.hits = 0;
+    this.sunk = false;
+    this.xcoord = xcoord;
+    this.ycoord = ycoord;
   }
   hit() {
     if (this.hits < this.length) {
