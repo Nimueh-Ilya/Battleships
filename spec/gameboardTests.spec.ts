@@ -5,4 +5,3 @@ test("Board creation", () => {
   const gameboard = new Gameboard();
   expect(gameboard.createBoard()).toStrictEqual(comparisonBoard);
 });
-const somechange = "somehcange";
