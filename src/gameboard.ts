@@ -5,17 +5,21 @@ type gameboardgrid = (number | string)[][];
 export class Gameboard {
   attacks: number;
   board: gameboardgrid;
-  carrier?: Ship;
+  ship?: Ship;
 
-  constructor(attacks: number = 0, board: gameboardgrid) {
+  constructor(attacks: number = 0) {
     this.attacks = attacks;
-    this.board = board;
+    this.board = this.createBoard();
   }
-  createBoard() {
+  createBoard(): gameboardgrid {
+    if (this.board) {
+      return this.board;
+    }
     this.board = Array(10).fill(0);
     this.board.forEach((point) => {
       point = Array(10).fill(0);
     });
+    return this.board;
   }
   placeship(
     positon: "horizontal" | "vertical",
@@ -24,8 +28,13 @@ export class Gameboard {
     length: number
   ) {
     if (positon === "horizontal") {
-      this.carrier = new Ship(length, xpos, ypos);
+      this.ship = new Ship(length, xpos, ypos);
+      this.board[ypos].fill(this.ship.length, xpos, xpos + this.ship.length);
     } else {
+      this.ship = new Ship(length, xpos, ypos);
+      for (let index = ypos; index < ypos + length; index++) {
+        this.board[index][xpos] = this.ship.length;
+      }
     }
   }
 }

@@ -5,7 +5,7 @@ export class Ship {
   xcoord: number;
   ycoord: number;
 
-  constructor(length: number, xcoord: number, ycoord: number) {
+  constructor(length: number, xcoord: number = 0, ycoord: number = 0) {
     this.length = length;
     this.hits = 0;
     this.sunk = false;
