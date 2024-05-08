@@ -36,8 +36,8 @@ export class Ship {
   }
 }
 export class Carrier extends Ship {
-  constructor(name: string, length: number) {
-    super((name = "Carrier"), (length = 5));
+  constructor() {
+    super("Carrier", 5);
   }
 }
 export class Battleship extends Ship {
