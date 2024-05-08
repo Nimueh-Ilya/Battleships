@@ -4,11 +4,11 @@ type gameboardgrid = (number | string | Ship)[][];
 
 export class Gameboard {
   board: gameboardgrid;
-  oriontation: "Horizontal" | "Vertical";
+  orientation: "Horizontal" | "Vertical";
 
   constructor() {
     this.board = this.createBoard();
-    this.oriontation = "Horizontal";
+    this.orientation = "Horizontal";
   }
   createBoard(): gameboardgrid {
     if (this.board) {
