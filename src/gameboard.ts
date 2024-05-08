@@ -24,6 +24,9 @@ export class Gameboard {
     if (this.checkShip(xpos, ypos)) {
       return "There is a ship docked";
     } else {
+      ship.xcoord = xpos;
+      ship.ycoord = ypos;
+
       this.board[xpos][ypos] = ship;
     }
   }
