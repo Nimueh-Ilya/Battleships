@@ -1,15 +1,14 @@
 import { Ship } from "./ship";
 
-type gameboardgrid = (number | string)[][];
+type gameboardgrid = (number | string | Ship)[][];
 
 export class Gameboard {
-  attacks: number;
   board: gameboardgrid;
-  ship?: Ship;
+  oriontation: "Horizontal" | "Vertical";
 
-  constructor(attacks: number = 0) {
-    this.attacks = attacks;
+  constructor() {
     this.board = this.createBoard();
+    this.oriontation = "Horizontal";
   }
   createBoard(): gameboardgrid {
     if (this.board) {
@@ -18,6 +17,22 @@ export class Gameboard {
     this.board = Array.from(Array(10), () => new Array(10));
     return this.board;
   }
-  placeShip(ship: Ship, xpos: number, ypos: number) {}
+  showBoard() {
+    console.log(this.board);
+  }
+  placeShip(ship: Ship, xpos: number, ypos: number) {
+    if (this.checkShip(xpos, ypos)) {
+      return "There is a ship docked";
+    } else {
+      this.board[xpos][ypos] = ship;
+    }
+  }
   receiveAttack(xpos: number, ypos: number) {}
+  checkShip(xpos: number, ypos: number) {
+    if (!this.board[xpos][ypos]) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

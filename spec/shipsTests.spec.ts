@@ -2,7 +2,7 @@ import { Ship } from "../src/ship";
 import { Gameboard } from "../src/gameboard";
 
 test("ship properties", () => {
-  const ship = new Ship(5);
+  const ship = new Ship("ship", 5);
   expect(ship).toEqual({
     length: 5,
     hits: 0,
@@ -12,7 +12,7 @@ test("ship properties", () => {
   });
 });
 test("ship hit", () => {
-  const ship = new Ship(5);
+  const ship = new Ship("ship", 5);
   ship.hit();
   expect(ship).toEqual({
     length: 5,
@@ -23,7 +23,7 @@ test("ship hit", () => {
   });
 });
 test("ship sink", () => {
-  const ship = new Ship(5);
+  const ship = new Ship("ship", 5);
   ship.sink();
   expect(ship).toEqual({
     length: 5,
@@ -35,7 +35,7 @@ test("ship sink", () => {
 });
 
 test("ship isSunk(not)", () => {
-  const ship = new Ship(2);
+  const ship = new Ship("ship", 2);
   ship.hit();
   ship.isSunk();
   expect(ship).toEqual({
@@ -47,7 +47,7 @@ test("ship isSunk(not)", () => {
   });
 });
 test("ship isSunk", () => {
-  const ship = new Ship(1);
+  const ship = new Ship("ship", 1);
   ship.hit();
   ship.isSunk();
   expect(ship).toEqual({

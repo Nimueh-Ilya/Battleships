@@ -1,5 +1,5 @@
 export class Ship {
-  name?: string;
+  name: string;
   length: number;
   hits: number;
   sunk: boolean;
@@ -7,11 +7,12 @@ export class Ship {
   ycoord: number;
 
   constructor(
+    name: string,
     length: number,
     xcoord: number = 0,
-    ycoord: number = 0,
-    name?: string
+    ycoord: number = 0
   ) {
+    this.name = name;
     this.length = length;
     this.hits = 0;
     this.sunk = false;
@@ -35,8 +36,9 @@ export class Ship {
   }
 }
 export class Carrier extends Ship {
-  name: string = "Carrier";
-  length: number = 5;
+  constructor(name: string, length: number) {
+    super((name = "Carrier"), (length = 5));
+  }
 }
 export class Battleship extends Ship {
   name: string = "Battleship";
