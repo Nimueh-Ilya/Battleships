@@ -41,18 +41,22 @@ export class Carrier extends Ship {
   }
 }
 export class Battleship extends Ship {
-  name: string = "Battleship";
-  length: number = 4;
+  constructor() {
+    super("Battleship", 4);
+  }
 }
 export class Destroyer extends Ship {
-  name: string = "Destroyer";
-  length: number = 3;
+  constructor() {
+    super("Destroyer", 5);
+  }
 }
 export class Submarine extends Ship {
-  name: string = "Submarine";
-  length: number = 3;
+  constructor() {
+    super("Submarine", 3);
+  }
 }
 export class patrolBoat extends Ship {
-  name: string = "Patrol Boat";
-  length: number = 2;
+  constructor() {
+    super("Patrol Boat", 2);
+  }
 }
