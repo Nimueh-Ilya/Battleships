@@ -4,6 +4,7 @@ import { Gameboard } from "../src/gameboard";
 test("ship properties", () => {
   const ship = new Ship("ship", 5);
   expect(ship).toEqual({
+    name: "ship",
     length: 5,
     hits: 0,
     sunk: false,
@@ -15,6 +16,7 @@ test("ship hit", () => {
   const ship = new Ship("ship", 5);
   ship.hit();
   expect(ship).toEqual({
+    name: "ship",
     length: 5,
     hits: 1,
     sunk: false,
@@ -26,6 +28,7 @@ test("ship sink", () => {
   const ship = new Ship("ship", 5);
   ship.sink();
   expect(ship).toEqual({
+    name: "ship",
     length: 5,
     hits: 0,
     sunk: true,
@@ -39,6 +42,7 @@ test("ship isSunk(not)", () => {
   ship.hit();
   ship.isSunk();
   expect(ship).toEqual({
+    name: "ship",
     length: 2,
     hits: 1,
     sunk: false,
@@ -51,6 +55,7 @@ test("ship isSunk", () => {
   ship.hit();
   ship.isSunk();
   expect(ship).toEqual({
+    name: "ship",
     length: 1,
     hits: 1,
     sunk: true,

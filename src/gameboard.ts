@@ -20,6 +20,28 @@ export class Gameboard {
   showBoard() {
     console.log(this.board);
   }
+  checkShip(xpos: number, ypos: number) {
+    if (!this.board[xpos][ypos]) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  checkHorizontal(xpos: number, ypos: number, ship: Ship) {
+    const tempArray = this.board[xpos].slice(ypos, ship.length);
+    if (!tempArray) {
+      return true;
+    } else return false;
+  }
+  checkVertical(xpos: number, ypos: number, ship: Ship) {
+    const tempArray = [];
+    for (let index = xpos; index < this.board.length; index++) {
+      tempArray.push(this.board[xpos][ypos]);
+    }
+    if (!tempArray) {
+      return true;
+    } else return false;
+  }
   placeShip(ship: Ship, xpos: number, ypos: number) {
     if (this.checkShip(xpos, ypos)) {
       return "There is a ship docked";
@@ -31,11 +53,4 @@ export class Gameboard {
     }
   }
   receiveAttack(xpos: number, ypos: number) {}
-  checkShip(xpos: number, ypos: number) {
-    if (!this.board[xpos][ypos]) {
-      return false;
-    } else {
-      return true;
-    }
-  }
 }
