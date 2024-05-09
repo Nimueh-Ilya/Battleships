@@ -20,11 +20,11 @@ export class Gameboard {
   showBoard() {
     console.log(this.board);
   }
-  checkShip(xpos: number, ypos: number) {
-    if (!this.board[xpos][ypos]) {
-      return false;
+  checkShip(xpos: number, ypos: number, ship: Ship) {
+    if (this.orientation == "Vertical") {
+      return this.checkVertical(xpos, ypos, ship);
     } else {
-      return true;
+      return this.checkHorizontal(xpos, ypos, ship);
     }
   }
   checkHorizontal(xpos: number, ypos: number, ship: Ship) {
@@ -43,7 +43,7 @@ export class Gameboard {
     } else return false;
   }
   placeShip(ship: Ship, xpos: number, ypos: number) {
-    if (this.checkShip(xpos, ypos)) {
+    if (this.checkShip(xpos, ypos, ship)) {
       return "There is a ship docked";
     } else {
       ship.xcoord = xpos;
