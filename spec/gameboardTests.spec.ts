@@ -13,16 +13,26 @@ test("Board creation", () => {
   expect(gameboard.createBoard()).toStrictEqual(comparisonBoard);
 });
 test("HorizontalChecker", () => {
-  const shipOne = new Destroyer();
   const game = new Gameboard();
+  const shipOne = new Destroyer();
+  const shipTwo = new Carrier();
   game.createBoard();
-  game.placeShip(new Carrier(), 2, 4);
-  expect(game.checkHorizontal(2, 4, shipOne)).toBe(false);
+  game.placeShip(shipTwo, 2, 4);
+  expect(game.checkHorizontal(shipOne, 2, 4)).toBe(false);
 });
 test("VerticalChecker", () => {
-  const shipOne = new Destroyer();
   const game = new Gameboard();
+  const shipOne = new Destroyer();
+  const shipTwo = new Carrier();
   game.createBoard();
-  game.placeShip(new Carrier(), 2, 4);
-  expect(game.checkVertical(2, 4, shipOne)).toBe(false);
+  game.placeShip(shipTwo, 2, 4);
+  expect(game.checkVertical(shipOne, 2, 4)).toBe(false);
+});
+test("Full Check", () => {
+  const game = new Gameboard();
+  const shipOne = new Destroyer();
+  const shipTwo = new Carrier();
+  game.createBoard();
+  game.placeShip(shipTwo, 2, 4);
+  expect(game.checkShip(shipOne, 2, 4)).toBe(false);
 });
