@@ -21,6 +21,8 @@ export class Gameboard {
     console.log(this.board);
   }
   checkShip(ship: Ship, xpos: number, ypos: number) {
+    if (!this.checkShipPlacement(ship, xpos, ypos)) return false;
+
     if (this.orientation == "Vertical") {
       return this.checkVertical(ship, xpos, ypos);
     } else {
@@ -52,10 +54,7 @@ export class Gameboard {
     }
   }
   placeShip(ship: Ship, xpos: number, ypos: number) {
-    if (
-      this.checkShip(ship, xpos, ypos) &&
-      this.checkShipPlacement(ship, xpos, ypos)
-    ) {
+    if (this.checkShip(ship, xpos, ypos)) {
       return "There is a ship docked";
     } else {
       ship.xcoord = xpos;
