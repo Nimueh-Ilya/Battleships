@@ -74,7 +74,7 @@ export class Gameboard {
   }
   placeShip(ship: Ship, xpos: number, ypos: number) {
     if (!this.checkShip(ship, xpos, ypos)) {
-      return "There is a ship docked";
+      return false;
     } else {
       ship.xcoord = xpos;
       ship.ycoord = ypos;
