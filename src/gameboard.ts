@@ -20,6 +20,19 @@ export class Gameboard {
   showBoard() {
     console.log(this.board);
   }
+  switchOrientation() {
+    switch (this.orientation) {
+      case "Vertical":
+        this.orientation = "Horizontal";
+        break;
+      case "Horizontal":
+        this.orientation = "Vertical";
+        break;
+      default:
+        "Horizontal";
+        break;
+    }
+  }
   checkShip(ship: Ship, xpos: number, ypos: number) {
     if (!this.checkShipPlacement(ship, xpos, ypos)) {
       return "ship Placement issue";
@@ -44,7 +57,7 @@ export class Gameboard {
     for (let index = xpos; index < this.board.length; index++) {
       tempArray.push(this.board[xpos][ypos]);
     }
-    if (!tempArray) {
+    if (tempArray[0] === undefined) {
       return true;
     } else {
       return false;
