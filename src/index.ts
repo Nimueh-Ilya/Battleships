@@ -15,6 +15,4 @@ game.createBoard();
 game.placeShip(shipTwo, 2, 4);
 game.placeShip(shipOne, 4, 6);
 game.switchOrientation();
-game.placeShip(shipThree, 1, 3);
-
 game.showBoard();

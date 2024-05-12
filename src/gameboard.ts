@@ -1,6 +1,6 @@
 import { Ship } from "./ship";
 
-type gameboardgrid = (number | string | Ship)[][];
+type gameboardgrid = Ship[][];
 
 export class Gameboard {
   board: gameboardgrid;
@@ -88,5 +88,12 @@ export class Gameboard {
       }
     }
   }
-  receiveAttack(xpos: number, ypos: number) {}
+  receiveAttack(xpos: number, ypos: number) {
+    if (this.board[xpos][ypos] !== undefined) {
+      this.board[xpos][ypos].hit();
+    } else {
+      console.log("DUD");
+      return;
+    }
+  }
 }
