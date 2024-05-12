@@ -82,7 +82,7 @@ export class Gameboard {
       if (this.orientation == "Horizontal") {
         this.board[xpos].fill(ship, ypos, ypos + ship.length);
       } else if (this.orientation == "Vertical") {
-        for (let index = xpos; index < ship.length; index++) {
+        for (let index = xpos; index <= ship.length; index++) {
           this.board[index][ypos] = ship;
         }
       }
