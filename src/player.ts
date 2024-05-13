@@ -8,6 +8,7 @@ export class Player {
   shipBattleship: Battleship;
   shipSubmarine: Submarine;
   shipPatrolBoat: patrolBoat;
+  shipsSunk: number;
 
   constructor(
     gameboard: Gameboard,
@@ -23,5 +24,6 @@ export class Player {
     this.shipBattleship = shipBattleship;
     this.shipSubmarine = shipSubmarine;
     this.shipPatrolBoat = shipPatrolBoat;
+    this.shipsSunk = 0;
   }
 }
