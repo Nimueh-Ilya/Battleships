@@ -1,5 +1,12 @@
 import { Gameboard } from "./gameboard";
-import { Battleship, Carrier, Destroyer, Submarine, patrolBoat } from "./ship";
+import {
+  Battleship,
+  Carrier,
+  Destroyer,
+  Submarine,
+  patrolBoat,
+  Ship,
+} from "./ship";
 
 export class Player {
   gameboard: Gameboard;
@@ -8,22 +15,28 @@ export class Player {
   shipBattleship: Battleship;
   shipSubmarine: Submarine;
   shipPatrolBoat: patrolBoat;
-  shipsSunk: number;
+  sunkenShips: Ship[];
 
   constructor(
-    gameboard: Gameboard,
     shipDestroyer: Destroyer,
     shipCarrier: Carrier,
     shipBattleship: Battleship,
     shipSubmarine: Submarine,
     shipPatrolBoat: patrolBoat
   ) {
-    this.gameboard = gameboard;
+    this.gameboard = new Gameboard();
     this.shipDestroyer = shipDestroyer;
     this.shipCarrier = shipCarrier;
     this.shipBattleship = shipBattleship;
     this.shipSubmarine = shipSubmarine;
     this.shipPatrolBoat = shipPatrolBoat;
-    this.shipsSunk = 0;
+    this.sunkenShips = [];
+  }
+  checkShunkShip(ship: Ship) {
+    if (this.sunkenShips.includes(ship)) {
+      return;
+    } else {
+      this.sunkenShips.push(ship);
+    }
   }
 }
