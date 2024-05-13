@@ -29,7 +29,7 @@ export class Gameboard {
         this.orientation = "Vertical";
         break;
       default:
-        "Horizontal";
+        this.orientation = "Horizontal";
         break;
     }
   }
@@ -54,8 +54,8 @@ export class Gameboard {
   }
   checkVertical(ship: Ship, xpos: number, ypos: number) {
     const tempArray = [];
-    for (let index = xpos; index < this.board.length; index++) {
-      tempArray.push(this.board[xpos][ypos]);
+    for (let index = xpos; index < xpos + ship.length; index++) {
+      tempArray.push(this.board[index][ypos]);
     }
     if (tempArray[0] === undefined) {
       return true;
@@ -82,7 +82,7 @@ export class Gameboard {
       if (this.orientation == "Horizontal") {
         this.board[xpos].fill(ship, ypos, ypos + ship.length);
       } else if (this.orientation == "Vertical") {
-        for (let index = xpos; index <= ship.length; index++) {
+        for (let index = xpos; index < xpos + ship.length; index++) {
           this.board[index][ypos] = ship;
         }
       }
