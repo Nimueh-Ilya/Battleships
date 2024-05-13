@@ -45,24 +45,22 @@ export class Gameboard {
     }
   }
   checkHorizontal(ship: Ship, xpos: number, ypos: number) {
-    const tempArray = this.board[xpos].slice(ypos, ypos + ship.length);
-    if (tempArray[0] === undefined) {
-      return true;
-    } else {
-      return false;
+    for (let index = ypos; index < ypos + ship.length; index++) {
+      if (this.board[xpos][index] !== undefined) {
+        return false;
+      }
     }
+    return true;
   }
   checkVertical(ship: Ship, xpos: number, ypos: number) {
-    const tempArray = [];
     for (let index = xpos; index < xpos + ship.length; index++) {
-      tempArray.push(this.board[index][ypos]);
+      if (this.board[index][ypos] !== undefined) {
+        return false;
+      }
     }
-    if (tempArray[0] === undefined) {
-      return true;
-    } else {
-      return false;
-    }
+    return true;
   }
+
   checkShipPlacement(ship: Ship, xpos: number, ypos: number) {
     if (this.orientation === "Horizontal") {
       if (ship.length + ypos > 9) return false;
