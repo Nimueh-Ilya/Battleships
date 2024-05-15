@@ -7,3 +7,7 @@ import {
   Submarine,
   patrolBoat,
 } from "./ship";
+import { game } from "./game";
+const gameEngine = () => {
+  const gameOne = new game();
+};

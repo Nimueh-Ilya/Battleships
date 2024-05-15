@@ -1,7 +1,9 @@
+import { Gameboard } from "./gameboard";
 import { Player } from "./player";
 import { Battleship, Carrier, Destroyer, Submarine, patrolBoat } from "./ship";
 
 export class game {
+  gameboard: Gameboard;
   player1: Player;
   player2: Player;
   player1Destroyer: Destroyer;
@@ -14,9 +16,12 @@ export class game {
   player2Battleship: Battleship;
   player2Submarine: Submarine;
   player2PatrolBoat: patrolBoat;
+  gameTurn: "Player 1" | "Player 2" | "";
   gameStatus: "PLAYER1 WIN" | "PLAYER2 WIN" | "";
   constructor() {
     this.gameStatus = "";
+    this.gameTurn = "";
+    this.gameboard = new Gameboard();
     this.player1Destroyer = new Destroyer();
     this.player1Carrier = new Carrier();
     this.player1Battleship = new Battleship();
@@ -51,6 +56,13 @@ export class game {
         this.gameStatus = "PLAYER2 WIN";
         return;
       }
+    }
+  }
+  changeTurn() {
+    if (this.gameTurn !== "Player 2") {
+      this.gameTurn = "Player 2";
+    } else {
+      this.gameTurn = "Player 1";
     }
   }
 }

@@ -29,3 +29,11 @@ test("check Win PLAYER1 WINS", () => {
   const gameOne = new game();
   expect(gameOne.gameStatus).toBe("");
 });
+test("Switch game turn", () => {
+  const gameOne = new game();
+  expect(gameOne.gameTurn).toBe("");
+  gameOne.changeTurn();
+  expect(gameOne.gameTurn).toBe("Player 2");
+  gameOne.changeTurn();
+  expect(gameOne.gameTurn).toBe("Player 1");
+});
