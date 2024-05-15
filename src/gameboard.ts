@@ -89,9 +89,13 @@ export class Gameboard {
   receiveAttack(xpos: number, ypos: number) {
     if (this.board[xpos][ypos] !== undefined) {
       this.board[xpos][ypos].hit();
+      console.log("hit");
+
+      return "HIT";
     } else {
-      console.log("DUD");
-      return;
+      console.log("dud");
+
+      return "DUD";
     }
   }
 }

@@ -36,3 +36,20 @@ test("Full Check", () => {
   game.placeShip(shipTwo, 2, 4);
   expect(game.checkShip(shipOne, 2, 4)).toBe(false);
 });
+test("Attack reception DUD", () => {
+  const gameOne = new Gameboard();
+  const shipOne = new Destroyer();
+  gameOne.createBoard();
+  gameOne.placeShip(shipOne, 2, 4);
+
+  expect(gameOne.receiveAttack(3, 8)).toBe("DUD");
+});
+test("Attack reception HIT", () => {
+  const gameOne = new Gameboard();
+  const shipOne = new Destroyer();
+  gameOne.createBoard();
+  gameOne.placeShip(shipOne, 2, 4);
+
+  expect(gameOne.receiveAttack(2, 4)).toBe("HIT");
+  expect(shipOne.hits).toBe(1);
+});

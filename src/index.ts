@@ -7,12 +7,3 @@ import {
   Submarine,
   patrolBoat,
 } from "./ship";
-const game = new Gameboard();
-const shipOne = new Destroyer();
-const shipTwo = new Carrier();
-const shipThree = new Submarine();
-game.createBoard();
-game.placeShip(shipTwo, 2, 4);
-game.placeShip(shipOne, 4, 6);
-game.switchOrientation();
-game.showBoard();
