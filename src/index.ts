@@ -7,22 +7,46 @@ import {
   Submarine,
   patrolBoat,
 } from "./ship";
-import { game } from "./game";
+import { Game } from "./game";
+import { Player } from "./player";
 const gameEngine = () => {
-  const gameOne = new game();
-  const player1PlaceShips = () => {
-    gameOne.player1.gameboard.placeShip(gameOne.player1.shipBattleship, 0, 0);
-    gameOne.player1.gameboard.placeShip(gameOne.player1.shipCarrier, 1, 0);
-    gameOne.player1.gameboard.placeShip(gameOne.player1.shipDestroyer, 2, 0);
-    gameOne.player1.gameboard.placeShip(gameOne.player1.shipPatrolBoat, 3, 0);
-    gameOne.player1.gameboard.placeShip(gameOne.player1.shipSubmarine, 4, 0);
-  };
-  const player2PlaceShips = () => {
-    gameOne.player2.gameboard.placeShip(gameOne.player2.shipBattleship, 0, 0);
-    gameOne.player2.gameboard.placeShip(gameOne.player2.shipCarrier, 1, 0);
-    gameOne.player2.gameboard.placeShip(gameOne.player2.shipDestroyer, 2, 0);
-    gameOne.player2.gameboard.placeShip(gameOne.player2.shipPatrolBoat, 3, 0);
-    gameOne.player2.gameboard.placeShip(gameOne.player2.shipSubmarine, 4, 0);
-  };
-  while (gameOne.gameStatus === "") {}
+  const gameOne = new Game();
+  const shipList = [
+    "Destroyer",
+    "Carrier",
+    "Battleship",
+    "Submarine",
+    "Patrol Boat",
+  ];
+  function placeShips(player: Player) {
+    const shipCoords: { [key: string]: [number, number] } = {};
+
+    for (const shipName in player.ships) {
+      if (player.ships.hasOwnProperty(shipName)) {
+        const x = promptForCoordinates(`X coords for ${shipName}`);
+        const y = promptForCoordinates(`Y coords for ${shipName}`);
+        shipCoords[shipName] = [x, y];
+      }
+    }
+
+    for (const shipName in shipCoords) {
+      if (shipCoords.hasOwnProperty(shipName)) {
+        const [x, y] = shipCoords[shipName];
+        player.gameboard.placeShip(player.ships[shipName], x, y);
+      }
+    }
+  }
+
+  function promptForCoordinates(message: string): number {
+    let input: string | null;
+    let value: number;
+
+    do {
+      input = prompt(message);
+      value = input !== null ? parseInt(input, 10) : NaN;
+    } while (isNaN(value));
+
+    return value;
+  }
 };
+gameEngine();
