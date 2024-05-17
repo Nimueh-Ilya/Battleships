@@ -11,20 +11,27 @@ import { Game } from "./game";
 import { Player } from "./player";
 const gameEngine = () => {
   const gameOne = new Game();
-  const shipList = [
-    "Destroyer",
-    "Carrier",
-    "Battleship",
-    "Submarine",
-    "Patrol Boat",
-  ];
   function placeShips(player: Player) {
     const shipCoords: { [key: string]: [number, number] } = {};
 
     for (const shipName in player.ships) {
       if (player.ships.hasOwnProperty(shipName)) {
-        const x = promptForCoordinates(`X coords for ${shipName}`);
-        const y = promptForCoordinates(`Y coords for ${shipName}`);
+        let validPlacement = false;
+        let x: number = -1,
+          y: number = -1;
+
+        while (!validPlacement) {
+          x = promptForCoordinates(`X coords for ${shipName}`) as number;
+          y = promptForCoordinates(`Y coords for ${shipName}`) as number;
+          if (player.gameboard.checkShip(player.ships[shipName], x, y)) {
+            validPlacement = true;
+          } else {
+            console.log(
+              `Invalid placement for ${shipName}. Please enter new coordinates.`
+            );
+          }
+        }
+
         shipCoords[shipName] = [x, y];
       }
     }
@@ -48,5 +55,9 @@ const gameEngine = () => {
 
     return value;
   }
+
+  gameOne.player1.gameboard.switchOrientation();
+  placeShips(gameOne.player1);
+  console.log(gameOne.player1.gameboard.board);
 };
 gameEngine();

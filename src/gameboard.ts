@@ -72,6 +72,7 @@ export class Gameboard {
   }
   placeShip(ship: Ship, xpos: number, ypos: number) {
     if (!this.checkShip(ship, xpos, ypos)) {
+      console.log(`There is a ship or not enough space for ${ship.name}`);
       return false;
     } else {
       ship.xcoord = xpos;
@@ -84,6 +85,7 @@ export class Gameboard {
           this.board[index][ypos] = ship;
         }
       }
+      return true;
     }
   }
   receiveAttack(xpos: number, ypos: number) {
