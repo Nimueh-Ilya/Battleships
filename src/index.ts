@@ -25,21 +25,13 @@ const gameEngine = () => {
           y = promptForCoordinates(`Y coords for ${shipName}`) as number;
           if (player.gameboard.checkShip(player.ships[shipName], x, y)) {
             validPlacement = true;
+            player.gameboard.placeShip(player.ships[shipName], x, y);
           } else {
             console.log(
               `Invalid placement for ${shipName}. Please enter new coordinates.`
             );
           }
         }
-
-        shipCoords[shipName] = [x, y];
-      }
-    }
-
-    for (const shipName in shipCoords) {
-      if (shipCoords.hasOwnProperty(shipName)) {
-        const [x, y] = shipCoords[shipName];
-        player.gameboard.placeShip(player.ships[shipName], x, y);
       }
     }
   }
