@@ -53,7 +53,18 @@ const gameEngine = () => {
     }
     gameOne.checkWin(player);
   }
-  function runGame() {}
+  function runGame() {
+    if (gameOne.gameTurn === "") {
+      gameOne.changeTurn();
+    }
+    if (gameOne.gameTurn === "Player 1") {
+      turn(gameOne.player1, gameOne.player2);
+      gameOne.changeTurn();
+    } else {
+      turn(gameOne.player2, gameOne.player1);
+      gameOne.changeTurn();
+    }
+  }
 
   function promptForCoordinates(message: string): number {
     let input: string | null;
@@ -69,6 +80,8 @@ const gameEngine = () => {
 
   gameOne.player1.gameboard.switchOrientation();
   placeShips(gameOne.player1);
-  console.log(gameOne.player1.gameboard.board);
+  while (gameOne.gameStatus === "") {
+    runGame();
+  }
 };
 gameEngine();
