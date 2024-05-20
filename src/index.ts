@@ -35,6 +35,24 @@ const gameEngine = () => {
       }
     }
   }
+  function turn(player: Player, opponent: Player) {
+    let x: number = -1,
+      y: number = -1,
+      validAttack = false;
+
+    while (!validAttack) {
+      x = promptForCoordinates(`X coords for attack`) as number;
+      y = promptForCoordinates(`Y coords for attack`) as number;
+      if (opponent.gameboard.receiveAttack(x, y) !== false) {
+        opponent.gameboard.receiveAttack(x, y);
+        validAttack = true;
+      } else {
+        console.log(`Can't attack there`);
+      }
+    }
+    gameOne.checkWin(player);
+  }
+  function runGame() {}
 
   function promptForCoordinates(message: string): number {
     let input: string | null;

@@ -89,11 +89,15 @@ export class Gameboard {
     }
   }
   receiveAttack(xpos: number, ypos: number) {
-    if (this.board[xpos][ypos] !== undefined) {
-      this.board[xpos][ypos].hit();
-      return "HIT";
+    if (xpos <= 9 && ypos <= 9) {
+      if (this.board[xpos][ypos] !== undefined) {
+        this.board[xpos][ypos].hit();
+        return "HIT";
+      } else {
+        return "DUD";
+      }
     } else {
-      return "DUD";
+      return false;
     }
   }
 }
