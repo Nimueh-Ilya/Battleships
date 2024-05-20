@@ -45,6 +45,7 @@ const gameEngine = () => {
       y = promptForCoordinates(`Y coords for attack`) as number;
       if (opponent.gameboard.receiveAttack(x, y) !== false) {
         opponent.gameboard.receiveAttack(x, y);
+        opponent.checkSunkShip(opponent.gameboard.board[x][y]);
         validAttack = true;
       } else {
         console.log(`Can't attack there`);

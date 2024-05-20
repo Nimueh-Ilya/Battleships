@@ -25,11 +25,14 @@ export class Player {
     };
     this.sunkenShips = [];
   }
-  checkShunkShip(ship: Ship) {
+  checkSunkShip(ship: Ship) {
     if (this.sunkenShips.includes(ship)) {
       return;
     } else {
-      this.sunkenShips.push(ship);
+      if (ship.sunk === true) {
+        this.sunkenShips.push(ship);
+      }
+      return;
     }
   }
 }
