@@ -1,3 +1,4 @@
+type orientation = "Vertical" | "Horizontal";
 import { Gameboard } from "./gameboard";
 import {
   Ship,
@@ -38,9 +39,13 @@ const gameEngine = () => {
   function turn(player: Player, opponent: Player) {
     let x: number = -1,
       y: number = -1,
+      orientation: string | null = "",
       validAttack = false;
 
     while (!validAttack) {
+      orientation = promptForOrientation(
+        "Horizontal or Vertical orientation? (CASE SENSITIVE)"
+      );
       x = promptForCoordinates(`X coords for attack`) as number;
       y = promptForCoordinates(`Y coords for attack`) as number;
       if (opponent.gameboard.receiveAttack(x, y) !== false) {
@@ -78,6 +83,15 @@ const gameEngine = () => {
     return value;
   }
 
+  function promptForOrientation(message: string) {
+    let input: string | null = "";
+    let value: string | null = "";
+    while (input !== "Vertical" && input !== "Horizontal") {
+      input = prompt(message);
+      value = input;
+    }
+    return value;
+  }
   gameOne.player1.gameboard.switchOrientation();
   placeShips(gameOne.player1);
   while (gameOne.gameStatus === "") {
