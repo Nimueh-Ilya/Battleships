@@ -8,3 +8,8 @@ EDIT: I WAS WRONG, I WAS DEFINITELY USING JEST WRONGLY
 ALSO first time using typescript so far so good I really enjoy writing the type of every small variable and object, yes it adds control but its a bit tedious.
 
 Resuming programming after a break feels refreshing :D
+
+## Next one the list
+
+    - Making a simple UI
+    - Using tailwinds for CSS
