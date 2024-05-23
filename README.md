@@ -9,7 +9,7 @@ ALSO first time using typescript so far so good I really enjoy writing the type 
 
 Resuming programming after a break feels refreshing :D
 
-## Next one the list
+## Next on the list
 
     - Making a simple UI
     - Using tailwinds for CSS
